@@ -32,7 +32,7 @@ function getPic() {
 
                 channel.send(exampleEmbed);
                 // console.log(pictureURL)
-            }, 10*1000)}); 
+            }, 24*60*60*1000)}); 
         });
     })
     .on("error", err => {
