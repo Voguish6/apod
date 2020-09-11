@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const http = require("http");
 const https = require("https");
 const { isContext } = require('vm');
-var token = "process.env.BOT_TOKEN"
+var token = process.env.BOT_TOKEN;
 let date_ob = new Date();
 let date = ("0" + date_ob.getDate()).slice(-2);
 let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -32,7 +32,7 @@ function getPic() {
 
                 channel.send(exampleEmbed);
                 // console.log(pictureURL)
-            }, 24*60*60*1000)}); 
+            }, 10*1000)}); 
         });
     })
     .on("error", err => {
@@ -43,7 +43,7 @@ function getPic() {
 }
 
 client.on("ready", function(){
-    client.user.setActivity('the stars....🪐', { type: 'WATCHING' });
+    client.user.setActivity('the stars....', { type: 'WATCHING' });
     console.log(`the client becomes ready to start`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
@@ -53,7 +53,5 @@ client.on("ready", function(){
 
 
 client.login(token)
-
-
 
 
