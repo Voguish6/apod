@@ -60,16 +60,19 @@ client.on("ready", function(){
     });
 
 
-client.on('message', message =>{
-    if(!message.content.startsWith(prefix) || message.author.client) return;
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
-    if (command === 'ping') {
-        client.commands.get('ping').execute(message, args);
-    } else if (command == 'youtube') {
-
-    }
-})
+    client.on('message', message =>{
+        if(!message.content.startsWith(prefix) || message.author.bot) return;
+    
+        const args = message.content.slice(prefix.length).split(/ +/);
+        const command = args.shift().toLowerCase();
+    
+        if(command === 'ping'){
+            client.commands.get('ping').execute(message, args);
+        } else if (command == 'youtube') {
+    
+        }
+    })
+    
 
 
 client.login(token)
