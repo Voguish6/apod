@@ -31,7 +31,6 @@ function getPic() {
                 .setTimestamp()
 
                 channel.send(exampleEmbed);
-                // console.log(pictureURL)
             }, 24*60*60*1000)}); 
         });
     })
