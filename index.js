@@ -30,7 +30,6 @@ function getPic(channel) {
         resp.on("end", () => {
             let url = JSON.parse(data).hdurl;
             client.guilds.cache.forEach((guild) => {
-
                 const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
@@ -52,10 +51,13 @@ client.on("ready", function(){
     console.log(`the client becomes ready to start`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
+    client.guilds.cache.forEach((guild) => {
     const nasaChannel = guild.channels.cache.find(channel => channel.name === "nasa-pic-of-the-day")
     setInterval(function() {
         getPic(nasaChannel)
-    }, 24*60*60*1000)
+    }, 24*60*60*1000)        
+    })
+
 });
 
 
