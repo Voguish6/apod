@@ -30,15 +30,14 @@ function getPic(channel) {
         resp.on("end", () => {
             let url = JSON.parse(data).hdurl;
             client.guilds.cache.forEach((guild) => {
-                const exampleEmbed = new Discord.MessageEmbed()
+                const exampleEmbed = new Discord.RichEmbed()
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
                 .setDescription('Todays Picture:')
                 .setThumbnail('https://lh3.googleusercontent.com/proxy/n5sEAzXHCzfxMROLim39lpnLfTnUhI-W-f2RIW7aB7iKKzUQidbgaJHRzapeD8T6PpciNMvxkPVmBAsv281u_GvGiImKMpldlSQFPvsnuiXDgjUkrDA')
                 .setImage(url)
                 .setTimestamp()
-
-                channel.send(exampleEmbed);}); 
+                channel.send({exampleEmbed});}); 
         });
     })
     .on("error", err => {
