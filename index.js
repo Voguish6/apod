@@ -30,7 +30,7 @@ function getPic(channel) {
         resp.on("end", () => {
             let url = JSON.parse(data).hdurl;
             client.guilds.cache.forEach((guild) => {
-                const exampleEmbed = new Discord.RichEmbed()
+                const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
                 .setDescription('Todays Picture:')
