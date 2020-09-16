@@ -74,8 +74,8 @@ client.on("ready", function(){
     setInterval(function() {
         client.guilds.cache.forEach(guild => {
             guild.channels.cache.forEach(channel => {
-                var nasaChannel = guild.channels.cache.find(channel.name === 'nasa-pic-of-the-day')
-                if(!nasaChannel) {
+                // var nasaChannel = guild.channels.cache.find(channel.name === 'nasa-pic-of-the-day')
+                if(!channel.name === 'nasa') {
                     console.log('Unable to find channel in: ' + guild.name)
                 } else {
                 console.log('Bitch it works')
