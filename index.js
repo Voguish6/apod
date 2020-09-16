@@ -60,14 +60,15 @@ client.on("ready", function(){
     console.log(`the client becomes ready to start`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
-    client.guilds.cache.forEach((guild) => {
-        setInterval(function() {
-            var nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
-            getPic(nasaChannel)
-            }.catch((error) => {
-                console.log('Unable to send error in ' + guild.name)
-                console.log(error)
-            }), 4*1000)})
+    client.guilds.forEach(guild => {
+        guild.channels.forEach(channel => {
+            let nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
+            setInterval(function() {
+                getPic(nasaChannel)
+            })
+        })
+    })
+    
     
 });
 
