@@ -54,7 +54,7 @@ client.on("ready", function(){
     const nasaChannel = guild.channels.cache.find(channel => channel.name === "nasa-pic-of-the-day")
     setInterval(function() {
         getPic(nasaChannel)
-    }, 24*60*60*1000)        
+    }, 4*1000)        
     })
 
 });
