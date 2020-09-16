@@ -33,7 +33,7 @@ function getPic(passedChannel) {
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
                 .setDescription('Todays Picture:')
-                .setThumbnail('https://lh3.googleusercontent.com/proxy/n5sEAzXHCzfxMROLim39lpnLfTnUhI-W-f2RIW7aB7iKKzUQidbgaJHRzapeD8T6PpciNMvxkPVmBAsv281u_GvGiImKMpldlSQFPvsnuiXDgjUkrDA')
+                .setThumbnail('https://lh3.googleusercontent.com/proxy/uQ6NAXxYH9RKpUJP6gzSL3LdbdybIIsndupa6IHkdkQ7lfr7ZnFYQatUqaiAbDx8RmFetCejQ0vv1076qoprcMpXb8Jbrq8_kbhC-bUz5_eBs_RHb9c')
                 .setImage(url)
                 .setTimestamp()
                 passedChannel.send(nasaEmbed);
