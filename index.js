@@ -71,7 +71,7 @@ client.on("ready", function(){
         if(command === 'help'){
             client.commands.get('help').execute(message, args);
         } else if (command == 'pic') {
-            getPic(messagechannel)
+            getPic(message.channel)
         }
     })
     
