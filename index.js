@@ -63,7 +63,9 @@ client.on("ready", function(){
     client.guilds.cache.forEach((guild) => {
         setInterval(function() {
             var nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
-            getPic(nasaChannel)
+            getPic(nasaChannel).on('error', err => {
+                console.log('Unable to send message in ' + guild.name)
+            })
             }, 4*1000)})
     }).on("error", err => {
         console.log("Error: " + err)
