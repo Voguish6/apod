@@ -29,7 +29,6 @@ function getPic(passedChannel) {
 
         resp.on("end", () => {
             let url = JSON.parse(data).hdurl;
-            client.guilds.cache.forEach((guild) => {
                 const nasaEmbed = new Discord.MessageEmbed()
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
@@ -37,7 +36,7 @@ function getPic(passedChannel) {
                 .setThumbnail('https://lh3.googleusercontent.com/proxy/n5sEAzXHCzfxMROLim39lpnLfTnUhI-W-f2RIW7aB7iKKzUQidbgaJHRzapeD8T6PpciNMvxkPVmBAsv281u_GvGiImKMpldlSQFPvsnuiXDgjUkrDA')
                 .setImage(url)
                 .setTimestamp()
-                passedChannel.send(nasaEmbed);}
+                passedChannel.send(nasaEmbed);
                 ); 
         });
     })
