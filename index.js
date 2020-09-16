@@ -78,12 +78,12 @@ client.on("ready", function(){
                 if(!channel.name === 'nasa') {
                     console.log('Unable to find channel in: ' + guild.name)
                 } else {
-                console.log('Bitch it works')
+                getPic(channel)
                 }
                 
             })
         })
-    })
+    }, 15*1000)
     
     
 });
