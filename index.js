@@ -60,15 +60,25 @@ client.on("ready", function(){
     console.log(`the client becomes ready to start`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
-    client.guilds.cache.forEach(guild => {
-        guild.channels.cache.forEach(channel => {
-            let nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
-            if(!nasaChannel) {
-                console.log('Unable to find channel in ' + guild.name)
-                break;
-            }
-            setInterval(function() {
-                getPic(nasaChannel)
+    // client.guilds.cache.forEach(guild => {
+    //     guild.channels.cache.forEach(channel => {
+    //         let nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
+    //         if(!nasaChannel) {
+    //             console.log('Unable to find channel in ' + guild.name)
+    //         }
+    //         setInterval(function() {
+    //             getPic(nasaChannel)
+    //         })
+    //     })
+    // })
+    setInterval(function() {
+        client.guilds.cache.forEach(guild => {
+            guild.channels.cache.forEach(channel => {
+                let nasaChannel = guild.channels.cache.find(channel.name === 'nasa-pic-of-the-day')
+                if(nasaChannel) {
+                    getPic(nasaChannel)
+                }
+                
             })
         })
     })
