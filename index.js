@@ -62,7 +62,7 @@ client.on("ready", function(){
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
     client.guilds.cache.forEach((guild) => {
         setInterval(function() {
-            var nasaChannel = client.guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
+            var nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
             getPic(nasaChannel)
             }, 4*1000)})
     }).on("error", err => {
