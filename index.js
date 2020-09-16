@@ -51,10 +51,11 @@ client.on("ready", function(){
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
     client.guilds.cache.forEach((guild) => {
-    const nasaChannel = guild.channels.cache.find(channel => channel.name === "nasa-pic-of-the-day")
-    setInterval(function() {
-        getPic(nasaChannel)
-    }, 4*1000)        
+        const nasaChannel = guild.channels.cache.find(channel => channel.name === "nasa-pic-of-the-day")
+    //     setInterval(function() {
+    //     getPic(nasaChannel)
+    // }, 4*1000)        
+        nasaChannel.send('e')
     })
 
 });
