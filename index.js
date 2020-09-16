@@ -37,7 +37,7 @@ function getPic(passedChannel) {
                 .setThumbnail('https://lh3.googleusercontent.com/proxy/n5sEAzXHCzfxMROLim39lpnLfTnUhI-W-f2RIW7aB7iKKzUQidbgaJHRzapeD8T6PpciNMvxkPVmBAsv281u_GvGiImKMpldlSQFPvsnuiXDgjUkrDA')
                 .setImage(url)
                 .setTimestamp()
-                guild.passedChannel.send(nasaEmbed);}
+                passedChannel.send(nasaEmbed);}
                 ); 
         });
     })
