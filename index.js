@@ -70,10 +70,7 @@ client.on("ready", function(){
     
         if(command === 'help'){
             client.commands.get('help').execute(message, args);
-        } else if (command == 'ping') {
-            client.commands.get('ping').execute(message, args);
         } else if (command == 'pic') {
-            var messagechannel = message.channel.cache
             getPic(messagechannel)
         }
     })
