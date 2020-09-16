@@ -60,13 +60,14 @@ client.on("ready", function(){
     console.log(`the client becomes ready to start`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
-    setInterval(function() {
     client.guilds.cache.forEach((guild) => {
-        const nasaChannel = guild.channels.cache.find(channel => channel.name === "nasa-pic-of-the-day")
-        getPic(nasaChannel)       
-    })}, 4*1000).on("error", err => {
-        console.log('Error: ' + err.message)
-    })});
+        setInterval(function() {
+            var nasaChannel = client.guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
+            getPic(nasaChannel)
+            }, 4*1000)})
+    }).on("error", err => {
+        console.log("Error: " + err)
+    });
 
 
 
