@@ -66,6 +66,8 @@ client.on("ready", function(){
             setInterval(function() {
                 getPic(nasaChannel)
             })
+        }).catch(error => {
+            console.log(error)
         })
     })
     
