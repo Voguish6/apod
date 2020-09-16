@@ -73,13 +73,12 @@ client.on("ready", function(){
     // })
     setInterval(function() {
         client.guilds.cache.forEach(guild => {
-            guild.channels.cache.forEach(channel => {
                 let nasaChannel = guild.channels.cache.find(channel.name === 'nasa-pic-of-the-day')
                 if(nasaChannel) {
                     getPic(nasaChannel)
                 }
                 
-            })
+            
         })
     })
     
