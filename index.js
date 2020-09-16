@@ -74,11 +74,11 @@ client.on("ready", function(){
     setInterval(function() {
         client.guilds.cache.forEach(guild => {
             guild.channels.cache.forEach(channel => {
-                let nasaChannel = guild.channels.cache.find(channel.name === 'nasa-pic-of-the-day')
-                if(nasaChannel = false) {
+                var nasaChannel = guild.channels.cache.find(channel.name === 'nasa-pic-of-the-day')
+                if(!nasaChannel) {
                     console.log('Unable to find channel in: ' + guild.name)
                 } else {
-                    getPic(nasaChannel)
+                console.log('Bitch it works')
                 }
                 
             })
