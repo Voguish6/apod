@@ -37,7 +37,7 @@ function getPic(passedChannel) {
                 .setImage(url)
                 .setTimestamp()
                 passedChannel.send(nasaEmbed);
-                ); 
+             
         });
     })
     .on("error", err => {
