@@ -64,10 +64,10 @@ client.on("ready", function(){
         setInterval(function() {
             var nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
             getPic(nasaChannel)
-            }, 4*1000)}).catch((error) => {
-                console.log('Unable to send message in ' + guild.name)
+            }.catch((error) => {
+                console.log('Unable to send error in ' + guild.name)
                 console.log(error)
-            })
+            }), 4*1000)})
     
 });
 
