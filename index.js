@@ -19,16 +19,16 @@ for(const file of commandFiles){
 
     client.commands.set(command.name, command);
 }
-function createEmbed(color, title, description, thumbnail, image) {
-    const funcEmbed = new Discord.MessageEmbed();
-    .setColor(color);
-    .setTitle(title);
-    .setDescription(description);
-    .setThumbnail(thumbnail);
-    .setImage(image);
-    .setTimestamp();
-    return funcEmbed;
-}
+// function createEmbed(color, title, description, thumbnail, image) {
+//     const funcEmbed = new Discord.MessageEmbed();
+//     .setColor(color);
+//     .setTitle(title);
+//     .setDescription(description);
+//     .setThumbnail(thumbnail);
+//     .setImage(image);
+//     .setTimestamp();
+//     return funcEmbed;
+// }
 function getPic(passedChannel) {
     https
     .get("https://api.nasa.gov/planetary/apod?api_key=QBj6HhO1zMguPDxu9DfKpjqmmknQS6PgP6y7h0Sk&date="+year + "-" + month + "-" + date, resp => {
