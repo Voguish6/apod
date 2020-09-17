@@ -9,7 +9,7 @@ module.exports= {
         .setThumbnail('https://i.ibb.co/2gt7TP3/Pin-Clipart-com-nasa-clipart-1116102.png')
         .addFields({
             name: '?pic', value: 'Sends the Astronomy Picture of the Day instantly.',
-            name: '?help', value: 'Sends this embed!'
+            name: '?help', value: 'Sends this embed!',
         })
         .setTimestamp()
         message.channel.send(helpEmbed)
