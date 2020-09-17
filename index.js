@@ -66,7 +66,7 @@ function dailyMSG() {
                 
             })
         })
-    }, 30*1000)
+    }, 24*60*60*1000)
 };
 
 client.on("ready", function(){
