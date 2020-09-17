@@ -53,39 +53,27 @@ function getPic(passedChannel) {
     .on("error", err => {
         console.log("Error: " + err.message);
     })}
-
-
-client.on("ready", function(){
-    client.user.setActivity('the stars....🌌', { type: 'WATCHING' });
-    console.log(`the client becomes ready to start`);
-	console.log(`I am ready! Logged in as ${client.user.tag}!`);
-    console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
-    // client.guilds.cache.forEach(guild => {
-    //     guild.channels.cache.forEach(channel => {
-    //         let nasaChannel = guild.channels.cache.find(channel => channel.name === 'nasa-pic-of-the-day')
-    //         if(!nasaChannel) {
-    //             console.log('Unable to find channel in ' + guild.name)
-    //         }
-    //         setInterval(function() {
-    //             getPic(nasaChannel)
-    //         })
-    //     })
-    // })
+function dailyMSG() {
     setInterval(function() {
         client.guilds.cache.forEach(guild => {
             guild.channels.cache.forEach(channel => {
-                // var nasaChannel = guild.channels.cache.find(channel.name === 'nasa-pic-of-the-day')
                 if(!channel.name === 'nasa') {
                     console.log('Unable to find channel in: ' + guild.name)
-                } else {
-                getPic(channel)
+                }
+                if(channel.name === 'nasa') {
+                    getPic(channel)
                 }
                 
             })
         })
     }, 15*1000)
-    
-    
+};
+
+client.on("ready", function(){
+    client.user.setActivity('the stars....🌌', { type: 'WATCHING' });
+    console.log(`the client becomes ready to start`);
+	console.log(`I am ready! Logged in as ${client.user.tag}!`);
+    console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
 });
 
 
