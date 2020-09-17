@@ -43,7 +43,7 @@ function getPic(passedChannel) {
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
                 .setDescription('Todays Picture:')
-                .setThumbnail('http://www.pngall.com/wp-content/uploads/5/NASA-Logo-PNG-Picture.png')
+                .setThumbnail('https://i.ibb.co/2gt7TP3/Pin-Clipart-com-nasa-clipart-1116102.png')
                 .setImage(url)
                 .setTimestamp()
                 passedChannel.send(nasaEmbed);
