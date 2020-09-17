@@ -70,7 +70,14 @@ function dailyMSG() {
 };
 
 client.on("ready", function(){
-    client.user.setActivity('the stars....🌌', { type: 'WATCHING' });
+    // client.user.setActivity('the stars....🌌', { type: 'WATCHING' });
+    client.user.setStatus('idle')
+    client.user.setPresence({
+        game: {
+            name: 'the stars...🌌',
+            type: 'Watching',
+        }
+    })
     console.log(`the client becomes ready to start`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
@@ -86,7 +93,7 @@ client.on("ready", function(){
         const command = args.shift().toLowerCase();
     
         if(command === 'help'){
-            client.commands.get('help').execute(message, args);
+            client.commands.get('help').execute(message, args, Discord);
         } else if (command == 'pic') {
             getPic(message.channel)
         }

@@ -1,7 +1,7 @@
 module.exports= {
     name: 'help',
     description: 'this is a ping command.',
-    execute(message, args){
+    execute(message, args, Discord){
         const helpEmbed = new Discord.MessageEmbed()
         .setColor('#3A7DC6')
         .setTitle('Help!')
