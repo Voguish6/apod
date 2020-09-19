@@ -6,10 +6,19 @@ const { isContext } = require('vm');
 const fs = require('fs');
 const prefix = "?"
 var token = process.env.BOT_TOKEN;
-let date_ob = new Date();
-let date = ("0" + date_ob.getDate()).slice(-2);
-let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-let year = date_ob.getFullYear();
+function date() {
+    let date_ob = new Date();
+    let date = ("0" + date_ob.getDate()).slice(-2);
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    let year = date_ob.getFullYear();
+    console.log('New Date Grabbed')
+    return year + "-" + month + "-" + date;
+}
+var newDate = date();
+ 
+
+
+
 
 client.commands = new Discord.Collection();
 
@@ -31,7 +40,7 @@ for(const file of commandFiles){
 // }
 function getPic(passedChannel) {
     https
-    .get("https://api.nasa.gov/planetary/apod?api_key=QBj6HhO1zMguPDxu9DfKpjqmmknQS6PgP6y7h0Sk&date="+year + "-" + month + "-" + date, resp => {
+    .get("https://api.nasa.gov/planetary/apod?api_key=QBj6HhO1zMguPDxu9DfKpjqmmknQS6PgP6y7h0Sk&date="+newDate, resp => {
         let data = " ";
         resp.on("data", chunk => {
             data += chunk;
@@ -75,6 +84,7 @@ client.on("ready", function(){
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
     dailyMSG()
+    setInterval(date, 24*60*60*1000)
 });
 
 
