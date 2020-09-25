@@ -14,7 +14,7 @@ function date() {
     console.log('New Date Grabbed')
     return year + "-" + month + "-" + date;
 }
-var newDate = date();
+
  
 
 
@@ -39,6 +39,7 @@ for(const file of commandFiles){
 //     return funcEmbed;
 // }
 function getPic(passedChannel) {
+    var newDate = date();
     https
     .get("https://api.nasa.gov/planetary/apod?api_key=QBj6HhO1zMguPDxu9DfKpjqmmknQS6PgP6y7h0Sk&date="+newDate, resp => {
         let data = " ";
@@ -62,8 +63,7 @@ function getPic(passedChannel) {
     .on("error", err => {
         console.log("Error: " + err.message);
     })}
-function dailyMSG() {
-    setInterval(function() {
+function msgAll() {
         client.guilds.cache.forEach(guild => {
             guild.channels.cache.forEach(channel => {
                 if(!channel.name === 'nasa') {
@@ -75,7 +75,6 @@ function dailyMSG() {
                 
             })
         })
-    }, 24*60*60*1000)
 };
 
 client.on("ready", function(){
@@ -83,8 +82,10 @@ client.on("ready", function(){
     console.log(`the client becomes ready to start`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
-    dailyMSG()
-    setInterval(date, 24*60*60*1000)
+    msgAll();
+    setInterval(() => msgAll(), 24*60*60*1000)
+    
+    
 });
 
 
