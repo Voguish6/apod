@@ -4,6 +4,11 @@ const http = require("http");
 const https = require("https");
 const { isContext } = require('vm');
 const fs = require('fs');
+// Cron Setup
+const cron = require("node-cron"); 
+const express = require("express"); 
+app = express();
+
 const prefix = "?"
 var token = process.env.BOT_TOKEN;
 function date() {
@@ -103,7 +108,10 @@ client.on("ready", function(){
         }
     })
     
-
+cron.schedule(`22 16 * * *`, function() {
+    msgAll();
+    console.log(`CRON: Sent daily message.`)
+})
 
 client.login(token)
 
