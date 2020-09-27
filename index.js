@@ -79,7 +79,7 @@ function msgAll() {
 
 client.on("ready", function(){
     client.user.setActivity('the stars....🌌', { type: 'WATCHING' });
-    console.log(`the client becomes ready to start`);
+    console.log(`VERISON: 1.0.1`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
     msgAll();
@@ -109,7 +109,7 @@ client.on("ready", function(){
             msgAll();
             console.log('SCHEDULER: Completed job.')
         }
-    }, 60*1000); // Repeat every 60000 milliseconds (1 minute)
+    }, 10*1000); // Repeat every 60000 milliseconds (1 minute)
     
 
 client.login(token)
