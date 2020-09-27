@@ -28,16 +28,7 @@ for(const file of commandFiles){
 
     client.commands.set(command.name, command);
 }
-// function createEmbed(color, title, description, thumbnail, image) {
-//     const funcEmbed = new Discord.MessageEmbed();
-//     .setColor(color);
-//     .setTitle(title);
-//     .setDescription(description);
-//     .setThumbnail(thumbnail);
-//     .setImage(image);
-//     .setTimestamp();
-//     return funcEmbed;
-// }
+
 function getPic(passedChannel) {
     var newDate = date();
     https
@@ -72,20 +63,13 @@ function msgAll() {
                 if(channel.name === 'nasa') {
                     getPic(channel)
                 }
-                
-            })
-        })
-};
+})})};
 
 client.on("ready", function(){
     client.user.setActivity('the stars....🌌', { type: 'WATCHING' });
     console.log(`VERISON: 1.0.2`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
-    msgAll();
-    setInterval(() => msgAll(), 24*60*60*1000)
-    
-    
 });
 
 
@@ -105,7 +89,7 @@ client.on("ready", function(){
     
     setInterval(function(){
         var scheduleDate = new Date(); // Create a Date object to find out what time it is
-        if(scheduleDate.getHours() === 21 && scheduleDate.getMinutes() === 58){ // Check the time
+        if(scheduleDate.getHours() === 9 && scheduleDate.getMinutes() === 0){ // Check the time
             msgAll();
             console.log('SCHEDULER: Completed job.')
         }
