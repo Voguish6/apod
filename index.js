@@ -89,7 +89,7 @@ client.on("ready", function(){
     
     setInterval(function(){
         var scheduleDate = new Date(); // Create a Date object to find out what time it is
-        if(scheduleDate.getHours() === 9 && scheduleDate.getMinutes() === 0){ // Check the time
+        if(scheduleDate.getHours() === 14 && scheduleDate.getMinutes() === 0){ // Check the time
             msgAll();
             console.log('SCHEDULER: Completed job.')
         }
