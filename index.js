@@ -79,7 +79,7 @@ function msgAll() {
 
 client.on("ready", function(){
     client.user.setActivity('the stars....🌌', { type: 'WATCHING' });
-    console.log(`VERISON: 1.0.1`);
+    console.log(`VERISON: 1.0.2`);
 	console.log(`I am ready! Logged in as ${client.user.tag}!`);
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
     msgAll();
@@ -105,11 +105,11 @@ client.on("ready", function(){
     
     setInterval(function(){
         var scheduleDate = new Date(); // Create a Date object to find out what time it is
-        if(scheduleDate.getHours() === 16 && scheduleDate.getMinutes() === 54){ // Check the time
+        if(scheduleDate.getHours() === 21 && scheduleDate.getMinutes() === 58){ // Check the time
             msgAll();
             console.log('SCHEDULER: Completed job.')
         }
-    }, 10*1000); // Repeat every 60000 milliseconds (1 minute)
+    }, 60*1000); // Repeat every 60000 milliseconds (1 minute)
     
 
 client.login(token)
