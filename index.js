@@ -4,11 +4,6 @@ const http = require("http");
 const https = require("https");
 const { isContext } = require('vm');
 const fs = require('fs');
-// Cron Setup
-const cron = require("node-cron"); 
-const express = require("express"); 
-app = express();
-
 const prefix = "?"
 var token = process.env.BOT_TOKEN;
 function date() {
@@ -108,10 +103,14 @@ client.on("ready", function(){
         }
     })
     
-cron.schedule(`22 16 * * *`, function() {
-    msgAll();
-    console.log(`CRON: Sent daily message.`)
-})
+    setInterval(function(){
+        var scheduleDate = new Date(); // Create a Date object to find out what time it is
+        if(scheduleDate.getHours() === 16 && scheduleDate.getMinutes() === 48){ // Check the time
+            msgAll();
+            console.log('SCHEDULER: Completed job.')
+        }
+    }, 60*1000); // Repeat every 60000 milliseconds (1 minute)
+    
 
 client.login(token)
 
