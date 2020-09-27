@@ -105,7 +105,7 @@ client.on("ready", function(){
     
     setInterval(function(){
         var scheduleDate = new Date(); // Create a Date object to find out what time it is
-        if(scheduleDate.getHours() === 16 && scheduleDate.getMinutes() === 48){ // Check the time
+        if(scheduleDate.getHours() === 16 && scheduleDate.getMinutes() === 54){ // Check the time
             msgAll();
             console.log('SCHEDULER: Completed job.')
         }
