@@ -40,6 +40,9 @@ function getPic(passedChannel) {
 
         resp.on("end", () => {
             let url = JSON.parse(data).hdurl;
+            let desc = JSON.parse(data).explanation;
+            console.log(desc.length)
+            if(desc.length > 1024) desc = desc.substring(0,1019);
                 const nasaEmbed = new Discord.MessageEmbed()
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
@@ -47,7 +50,11 @@ function getPic(passedChannel) {
                 .setThumbnail('https://i.ibb.co/2gt7TP3/Pin-Clipart-com-nasa-clipart-1116102.png')
                 .setImage(url)
                 .setTimestamp()
-                passedChannel.send(nasaEmbed);
+                .addField('**Description**' , "*" + desc + '...' + "*")
+                .setURL('https://apod.nasa.gov/')
+                passedChannel.send(nasaEmbed).then(embed => {
+                    embed.react(`🪐`)
+                })
              
         });
     })
@@ -72,7 +79,25 @@ client.on("ready", function(){
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
 });
 
+client.on("messageReactionAdd", function(messageReaction, user){
+    if(user.id === '756331800795545751') {
+        console.log('The bot reacted to its msg.')
+        return;
+    }
+    let roleName = 'nasa';
+    let role = messageReaction.message.guild.roles.cache.find(x => x.name === roleName);
+    if (!role) {
+        console.log('Role does not exist.')
+    } else {
+        console.log('ROle exists')
+        try {
+            user.roles.add(role)
+        } catch {
+            console.log('Failed to apply role.')
+        }
+    }
 
+});
 
     client.on('message', message =>{
         if(!message.content.startsWith(prefix) || message.author.bot) return;
@@ -95,7 +120,6 @@ client.on("ready", function(){
         }
     }, 60*1000); // Repeat every 60000 milliseconds (1 minute)
     
-
 client.login(token)
 
 
