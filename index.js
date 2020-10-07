@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", 'REACTION']});
 const http = require("http");
 const https = require("https");
 const { isContext } = require('vm');
@@ -79,25 +79,47 @@ client.on("ready", function(){
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);  
 });
 
-client.on("messageReactionAdd", function(messageReaction, user){
-    if(user.id === '756331800795545751') {
-        console.log('The bot reacted to its msg.')
-        return;
-    }
-    let roleName = 'nasa';
-    let role = messageReaction.message.guild.roles.cache.find(x => x.name === roleName);
+client.on("messageReactionAdd", async function(reaction, user){
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+
+    if (user.id === '756331800795545751') return;
+    if (!reaction.message.guild) return;
+    let role = reaction.message.guild.roles.cache.find(x => x.name === 'nasa');
     if (!role) {
-        console.log('Role does not exist.')
+        return;
     } else {
-        console.log('ROle exists')
+        if (reaction.emoji.name === '🪐'){
+            try {
+                console.log('Attempting to add a role.')
+                await reaction.message.guild.members.cache.get(user.id).roles.add(role)
+            } catch {
+                console.log('Failed to add role to someone.')
+            }
+        }     
+    }
+});
+
+client.on("messageReactionRemove", async function(reaction, user){
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+
+    if (user.id === client.user.id) return;
+    if (!reaction.message.guild) return;
+    let role = reaction.message.guild.roles.cache.find(x => x.name === 'nasa');
+    if (reaction.emoji.name === '🪐'){
         try {
-            user.roles.add(role)
+            console.log('Attempting to remove a role.')
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(role)
         } catch {
-            console.log('Failed to apply role.')
+            console.log('Failed to remove a role.')
         }
+        
+
     }
 
 });
+
 
     client.on('message', message =>{
         if(!message.content.startsWith(prefix) || message.author.bot) return;
