@@ -31,9 +31,9 @@ for(const file of commandFiles){
 
 function getPic(passedChannel, togglePing) {
     let role = passedChannel.guild.roles.cache.find(x => x.name === 'nasa');
-    if(!role) {
-        let togglePing = 'false'
-    }
+    if (!role) {
+        var togglePing = 'false'
+    } 
     var newDate = date();
     https
     .get("https://api.nasa.gov/planetary/apod?api_key=QBj6HhO1zMguPDxu9DfKpjqmmknQS6PgP6y7h0Sk&date="+newDate, resp => {
@@ -55,9 +55,9 @@ function getPic(passedChannel, togglePing) {
                 .setTimestamp()
                 .addField('**Description**' , "*" + desc + '...' + "*")
                 .setURL('https://apod.nasa.gov/')
-                if (togglePing = 'true') {
+                if (togglePing === 'true') {
                     nasaEmbed.setDescription(`<@&` + role + `>` + ' Todays Picture:');
-                } else if(togglePing = 'false') {
+                } else if(togglePing === 'false') {
                     nasaEmbed.setDescription('Todays Picture:');
                 }
                 // if (togglePing = "true") {
@@ -87,7 +87,7 @@ function msgAll() {
                     console.log('Unable to find channel in: ' + guild.name)
                 }
                 if(channel.name === 'nasa') {
-                    getPic(channel)
+                    getPic(channel, 'true')
                 }
 })})};
 
