@@ -164,6 +164,6 @@ client.on("messageReactionRemove", async function(reaction, user){
         }
     }, 60*1000); // Repeat every 60000 milliseconds (1 minute)
     
-client.login('NzU2MzMxODAwNzk1NTQ1NzUx.X2QS4Q.NSLCt_hVALTu4c0-i3mfYpiSOoY')
+client.login(token)
 
 
