@@ -4,6 +4,7 @@ const http = require("http");
 const https = require("https");
 const { isContext } = require('vm');
 const fs = require('fs');
+const e = require('express');
 const prefix = "?"
 var token = process.env.BOT_TOKEN;
 function date() {
@@ -29,7 +30,11 @@ for(const file of commandFiles){
     client.commands.set(command.name, command);
 }
 
-function getPic(passedChannel) {
+function getPic(passedChannel, togglePing) {
+    let role = passedChannel.guild.roles.cache.find(x => x.name === 'nasa');
+    if(!role) {
+        let togglePing = 'false'
+    }
     var newDate = date();
     https
     .get("https://api.nasa.gov/planetary/apod?api_key=QBj6HhO1zMguPDxu9DfKpjqmmknQS6PgP6y7h0Sk&date="+newDate, resp => {
@@ -46,14 +51,29 @@ function getPic(passedChannel) {
                 const nasaEmbed = new Discord.MessageEmbed()
                 .setColor('#3A7DC6')
                 .setTitle('Astronomy Picture of the Day!')
-                .setDescription('Todays Picture:')
                 .setThumbnail('https://i.ibb.co/2gt7TP3/Pin-Clipart-com-nasa-clipart-1116102.png')
                 .setImage(url)
                 .setTimestamp()
                 .addField('**Description**' , "*" + desc + '...' + "*")
                 .setURL('https://apod.nasa.gov/')
-                passedChannel.send(nasaEmbed).then(embed => {
-                    embed.react(`🪐`)
+                if (togglePing = 'true') {
+                    nasaEmbed.setDescription(`<@&` + role + `>` + ' Todays Picture:');
+                } else if(togglePing = 'false') {
+                    nasaEmbed.setDescription('Todays Picture:');
+                }
+                // if (togglePing = "true") {
+                //     try {
+                //         let role = passedChannel.guild.roles.cache.find(x => x.name === 'nasa');
+                //         nasaEmbed.setDescription(`<@&` + role + `>` + ' Todays Picture:')
+                //     } catch {
+                //         nasaEmbed.setDescription('Todays Picture:')
+                //     }                    
+                // } else if(togglePing = "false"){
+                //         nasaEmbed.setDescription('Todays Picture:')
+                //     }
+                    
+                    passedChannel.send(nasaEmbed).then(embed => {
+                        embed.react(`🪐`)
                 })
              
         });
@@ -130,7 +150,9 @@ client.on("messageReactionRemove", async function(reaction, user){
         if(command === 'help'){
             client.commands.get('help').execute(message, args, Discord);
         } else if (command == 'pic') {
-            getPic(message.channel)
+            getPic(message.channel, 'false')
+            // let role = message.guild.roles.cache.find(x => x.name === 'nasa');
+            // message.channel.send(`<@&` + role + `>`)
         }
     })
     
@@ -142,6 +164,6 @@ client.on("messageReactionRemove", async function(reaction, user){
         }
     }, 60*1000); // Repeat every 60000 milliseconds (1 minute)
     
-client.login(token)
+client.login('NzU2MzMxODAwNzk1NTQ1NzUx.X2QS4Q.NSLCt_hVALTu4c0-i3mfYpiSOoY')
 
 
