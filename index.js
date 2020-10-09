@@ -4,7 +4,6 @@ const http = require("http");
 const https = require("https");
 const { isContext } = require('vm');
 const fs = require('fs');
-const e = require('express');
 const prefix = "?"
 var token = process.env.BOT_TOKEN;
 function date() {
