@@ -95,7 +95,7 @@ client.on("ready", async function(){
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
 });
 
-client.login('NzU2MzMxODAwNzk1NTQ1NzUx.X2QS4Q.ySxevIkgW2PanxGu-FJajJphjII')
+client.login(token)
 
 exports.https = https;
 exports.Discord = Discord;
