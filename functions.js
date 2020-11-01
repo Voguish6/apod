@@ -73,9 +73,10 @@ function mars(passedChannel, date, author, rover) {
         }
             var i;
             for (i = 0; i < 5; i++) {
-                passedChannel.send(urlList[Math.floor(Math.random() * Math.floor(urlList.length))]);
+                let newEmbed = createEmbed('#981212', '**Rover Picture #**' + i, 'This image is from ***' + rover + '***', 'https://cdn.iconscout.com/icon/premium/png-512-thumb/mars-rover-617867.png')
+                newEmbed.setImage(urlList[Math.floor(Math.random() * Math.floor(urlList.length))])
+                passedChannel.send(newEmbed)
             }
-            console.log(urlList)
 
                 })
             
