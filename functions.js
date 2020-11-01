@@ -116,6 +116,6 @@ function date() {
     
 exports.date = date;
 exports.createEmbed = createEmbed;    
-exports.picture = apod;
+exports.apod = apod;
 exports.msgAll = msgAll;
 exports.mars = mars;
