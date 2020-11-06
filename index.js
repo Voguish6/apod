@@ -83,7 +83,7 @@ client.on('message', message =>{
 setInterval(function(){
     var scheduleDate = new Date(); // Create a Date object to find out what time it is
     if(scheduleDate.getHours() === 14 && scheduleDate.getMinutes() === 0){ // Check the time
-        msgAll();
+        func.msgAll();
         console.log('SCHEDULER: Completed job.')
     }
 }, 60*1000); // Repeat every 60000 milliseconds (1 minute)
