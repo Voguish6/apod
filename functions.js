@@ -89,10 +89,10 @@ function mars(passedChannel, date, author, rover) {
 function msgAll() {
     index.client.guilds.cache.forEach(guild => {
         guild.channels.cache.forEach(channel => {
-            if(!channel.name === 'nasa') {
+            if(!channel.name === 'apod') {
                 console.log('Unable to find channel in: ' + guild.name)
             }
-            if(channel.name === 'nasa') {
+            if(channel.name === 'apod') {
                 var today = date();
                 apod(channel, 'true', today)
             }
