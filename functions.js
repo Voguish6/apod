@@ -30,7 +30,7 @@ function apod(passedChannel, togglePing, date, author) {
                 .addField('**Description**' , "*" + desc + '...' + "*")
                 .setURL('https://apod.nasa.gov/')
                 if (togglePing === 'true') {
-                    nasaEmbed.setFooter(`<@&` + role + `>`);
+                    nasaEmbed.addField(`<@%${role}>`)
                 } else if(togglePing === 'false') {
                     nasaEmbed.setDescription('Todays Picture:');
                 }
