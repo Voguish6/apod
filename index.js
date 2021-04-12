@@ -75,8 +75,10 @@ client.on('message', message =>{
         var today = func.date();
         client.commands.get('mars').execute(message, args, func.mars, today)
         // CATCH COMMAND ERRORS
+    } else if (command == ""){
+        reuturn;
     } else {
-        message.channel.send('Unknown command.')
+        message.channel.send('Unknown command.")
     }
 })
 
