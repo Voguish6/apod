@@ -76,7 +76,7 @@ client.on('message', message =>{
         client.commands.get('mars').execute(message, args, func.mars, today)
         // CATCH COMMAND ERRORS
     } else if (command == ""){
-        reuturn;
+        return;
     } else {
         message.channel.send('Unknown command.")
     }
