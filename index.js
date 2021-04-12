@@ -78,7 +78,7 @@ client.on('message', message =>{
     } else if (command == ""){
         return;
     } else {
-        message.channel.send('Unknown command.")
+        message.channel.send("Unknown command.")
     }
 })
 
